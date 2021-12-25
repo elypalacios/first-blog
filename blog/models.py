@@ -16,4 +16,19 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+class Book(models.Model):
+    author = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
+    genre = models.CharField(max_length=200)
+    pages = models.IntegerField()
+    summary = models.TextField()
+    published_date = models.DateField(blank=True, null=True)
+    
+    def book_published(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
+
     
